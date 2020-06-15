@@ -1,5 +1,3 @@
 <ul>
-  <li>{{ tasks[0].title }} <span>{{ tasks[0].done }}</span></li>
-  <li>{{ tasks[1].title }} <span>{{ tasks[1].done }}</span></li>
-  <li>{{ tasks[2].title }} <span>{{ tasks[2].done }}</span></li>
+  <li *ngFor="let task of tasks">{{ task.title }} <span>{{ task.done }}</span></li>
 </ul>
