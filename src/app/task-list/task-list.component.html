@@ -1,11 +1,6 @@
 <ul>
-  <li *ngFor="let task of tasks" class="{{ task.done ? 'done' : '' }}">
-    <label>
-      <input type="checkbox" [(ngModel)]="task.done">
-      {{ task.title }}
-      （期日：{{ task.deadline|date:'yyyy/MM/dd' }}）
-      <span *ngIf="isOverdue(task)" class="overdue">期日超過</span>
-    </label>
+  <li *ngFor="let task of tasks">
+    <app-task-list-item [task]="task"></app-task-list-item>
   </li>
   <li>
     <input type="text" [(ngModel)]="newTask.title" #title="ngModel" required>

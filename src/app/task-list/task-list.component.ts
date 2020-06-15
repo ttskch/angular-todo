@@ -30,8 +30,4 @@ export class TaskListComponent implements OnInit {
       deadline: new Date(),
     };
   }
-
-  isOverdue(task) {
-    return !task.done && task.deadline < (new Date()).setHours(0, 0, 0, 0);
-  }
 }
