@@ -15,19 +15,10 @@ export class TaskListComponent implements OnInit {
     {title: '銀行に行く', done: false, deadline: new Date('2020-01-03')},
   ];
 
-  newTask = {
-    title: '',
-    deadline: new Date(),
-  };
-
   ngOnInit(): void {
   }
 
-  addTask() {
-    this.tasks.push({title: this.newTask.title, done: false, deadline: new Date(this.newTask.deadline)});
-    this.newTask = {
-      title: '',
-      deadline: new Date(),
-    };
+  addTask(task) {
+    this.tasks.push(task);
   }
 }

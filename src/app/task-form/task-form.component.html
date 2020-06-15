@@ -1,1 +1,4 @@
-<p>task-form works!</p>
+<input type="text" [(ngModel)]="newTask.title" #title="ngModel" required>
+<input type="date" [(ngModel)]="newTask.deadline">
+<button (click)="submit()" [disabled]="title.invalid">追加</button>
+<br>newTaskの値: {{ newTask|json }}
