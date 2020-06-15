@@ -7,15 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   tasks = [
-    {title: '牛乳を買う', done: false},
-    {title: '可燃ゴミを出す', done: true},
-    {title: '銀行に行く', done: false},
+    {title: '牛乳を買う', done: false, deadline: new Date('2021-01-01')},
+    {title: '可燃ゴミを出す', done: true, deadline: new Date('2021-01-02')},
+    {title: '銀行に行く', done: false, deadline: new Date('2021-01-03')},
   ];
 
-  newTaskTitle = '';
+  newTask = {
+    title: '',
+    deadline: new Date(),
+  };
 
   addTask() {
-    this.tasks.push({title: this.newTaskTitle, done: false});
-    this.newTaskTitle = '';
+    this.tasks.push({title: this.newTask.title, done: false, deadline: new Date(this.newTask.deadline)});
+    this.newTask = {
+      title: '',
+      deadline: new Date(),
+    };
   }
 }
