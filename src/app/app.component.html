@@ -1,17 +1,1 @@
-<ul>
-  <li *ngFor="let task of tasks" class="{{ task.done ? 'done' : '' }}">
-    <label>
-      <input type="checkbox" [(ngModel)]="task.done">
-      {{ task.title }}
-      （期日：{{ task.deadline|date:'yyyy/MM/dd' }}）
-      <span *ngIf="isOverdue(task)" class="overdue">期日超過</span>
-    </label>
-  </li>
-  <li>
-    <input type="text" [(ngModel)]="newTask.title" #title="ngModel" required>
-    <input type="date" [(ngModel)]="newTask.deadline">
-    <button (click)="addTask()" [disabled]="title.invalid">追加</button>
-  </li>
-</ul>
-
-newTaskの値: {{ newTask|json }}
+<app-task-list></app-task-list>
