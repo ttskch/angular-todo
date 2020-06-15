@@ -11,4 +11,6 @@ export class AppComponent {
     {title: '可燃ゴミを出す', done: true},
     {title: '銀行に行く', done: false},
   ];
+
+  newTaskTitle = '';
 }

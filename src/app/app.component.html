@@ -2,4 +2,9 @@
   <li *ngFor="let task of tasks" class="{{ task.done ? 'done' : '' }}">
     {{ task.title }}
   </li>
+  <li>
+    <input type="text" [(ngModel)]="newTaskTitle">
+  </li>
 </ul>
+
+newTaskTitleの値: {{ newTaskTitle }}
