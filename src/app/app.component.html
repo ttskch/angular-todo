@@ -1,3 +1,5 @@
 <ul>
-  <li *ngFor="let task of tasks">{{ task.title }} <span>{{ task.done }}</span></li>
+  <li *ngFor="let task of tasks" class="{{ task.done ? 'done' : '' }}">
+    {{ task.title }}
+  </li>
 </ul>
