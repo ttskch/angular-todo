@@ -13,17 +13,18 @@ export class TaskListComponent implements OnInit {
     private firestore: AngularFirestore,
   ) { }
 
-  tasks: Task[] = [
-    {title: '牛乳を買う', done: false, deadline: new Date('2021-01-01')},
-    {title: '可燃ゴミを出す', done: true, deadline: new Date('2020-01-02')},
-    {title: '銀行に行く', done: false, deadline: new Date('2020-01-03')},
-  ];
+  tasks: Task[] = [];
 
   ngOnInit(): void {
+    this.firestore.collection('tasks').valueChanges().subscribe((tasks: any[]) => {
+      this.tasks = tasks.map(task => {
+        task.deadline = task.deadline ? task.deadline.toDate() : null;
+        return task;
+      }) as Task[];
+    });
   }
 
   addTask(task: Task): void {
-    this.tasks.push(task);
     this.firestore.collection('tasks').add(task);
   }
 }
