@@ -1,4 +1,5 @@
-<input type="text" [(ngModel)]="newTask.title" #title="ngModel" required>
-<input type="date" [(ngModel)]="newTask.deadline">
-<button (click)="submit()" [disabled]="title.invalid">追加</button>
-<br>newTaskの値: {{ newTask|json }}
+<nz-input-group nzCompact>
+  <input nz-input placeholder="To do" [(ngModel)]="newTask.title" name="title" #title="ngModel" autofocus required>
+  <nz-date-picker [(ngModel)]="newTask.deadline"></nz-date-picker>
+  <button nz-button nzType="primary" (click)="submit()" [disabled]="title.invalid">追加</button>
+</nz-input-group>
