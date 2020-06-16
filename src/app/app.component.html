@@ -3,8 +3,8 @@
     {{ task.title }}
   </li>
   <li>
-    <input type="text" [(ngModel)]="newTaskTitle">
-    <button (click)="addTask()">追加</button>
+    <input type="text" [(ngModel)]="newTaskTitle" #title="ngModel" required>
+    <button (click)="addTask()" [disabled]="title.invalid">追加</button>
   </li>
 </ul>
 
