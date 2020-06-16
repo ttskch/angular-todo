@@ -41,4 +41,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
 
     this.firestore.collection('tasks').doc(task.id).update(clone);
   }
+
+  deleteTask(task: Task): void {
+    this.firestore.collection('tasks').doc(task.id).delete();
+  }
 }
