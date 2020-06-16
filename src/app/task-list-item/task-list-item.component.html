@@ -1,5 +1,10 @@
-<label nz-checkbox [(ngModel)]="task.done" class="{{ task.done ? 'done' : '' }}">
-  {{ task.title }}
-  <span *ngIf="task.deadline">（期日：{{ task.deadline|date:'yyyy/MM/dd' }}）</span>
-  <span *ngIf="isOverdue(task)" class="overdue">期日超過</span>
-</label>
+<div class="left">
+  <label nz-checkbox [(ngModel)]="task.done" class="{{ task.done ? 'done' : '' }}">
+    {{ task.title }}
+  </label>
+</div>
+
+<div class="right">
+  <nz-tag nzColor="error" *ngIf="isOverdue(task)">期日超過</nz-tag>
+  <nz-tag nzColor="default" *ngIf="task.deadline">期日：{{ task.deadline|date:'yyyy/MM/dd' }}</nz-tag>
+</div>

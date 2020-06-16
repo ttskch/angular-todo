@@ -1,8 +1,15 @@
-.done {
-  color: gray;
-  text-decoration: line-through;
+.left {
+  float: left;
 }
 
-.overdue {
-  color: darkred;
+.right {
+  float: right;
+  :last-child {
+    margin-right: 0;
+  }
+}
+
+.done {
+  color: lightgray;
+  text-decoration: line-through;
 }

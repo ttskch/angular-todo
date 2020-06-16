@@ -12,7 +12,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { NzCheckboxModule, NzListModule, NzPageHeaderModule } from 'ng-zorro-antd';
+import { NzCheckboxModule, NzListModule, NzPageHeaderModule, NzTagModule } from 'ng-zorro-antd';
 
 registerLocaleData(en);
 
@@ -31,6 +31,7 @@ registerLocaleData(en);
     NzPageHeaderModule,
     NzListModule,
     NzCheckboxModule,
+    NzTagModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
