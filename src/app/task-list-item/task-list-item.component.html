@@ -1,6 +1,6 @@
 <label class="{{ task.done ? 'done' : '' }}">
   <input type="checkbox" [(ngModel)]="task.done">
   {{ task.title }}
-  （期日：{{ task.deadline|date:'yyyy/MM/dd' }}）
+  <span *ngIf="task.deadline">（期日：{{ task.deadline|date:'yyyy/MM/dd' }}）</span>
   <span *ngIf="isOverdue(task)" class="overdue">期日超過</span>
 </label>

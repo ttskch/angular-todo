@@ -14,17 +14,21 @@ export class TaskFormComponent implements OnInit {
 
   newTask = {
     title: '',
-    deadline: new Date(),
+    deadline: null,
   };
 
   ngOnInit(): void {
   }
 
   submit(): void {
-    this.addTask.emit({title: this.newTask.title, done: false, deadline: new Date(this.newTask.deadline)});
+    this.addTask.emit({
+      title: this.newTask.title,
+      done: false,
+      deadline: this.newTask.deadline ? new Date(this.newTask.deadline) : null,
+    });
     this.newTask = {
       title: '',
-      deadline: new Date(),
+      deadline: null,
     };
   }
 }
