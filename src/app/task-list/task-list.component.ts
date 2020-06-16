@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../../models/task';
+import { fromDocument, Task, TaskDocument } from '../../models/task';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
@@ -16,11 +16,8 @@ export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
 
   ngOnInit(): void {
-    this.firestore.collection('tasks').valueChanges().subscribe((tasks: any[]) => {
-      this.tasks = tasks.map(task => {
-        task.deadline = task.deadline ? task.deadline.toDate() : null;
-        return task;
-      }) as Task[];
+    this.firestore.collection('tasks').valueChanges().subscribe((tasks: TaskDocument[]) => {
+      this.tasks = tasks.map(fromDocument);
     });
   }
 
