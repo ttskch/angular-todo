@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-todo-cf90c": {
+      "hosting": {
+        "angular-todo": [
+          "angular-todo-cf90c"
+        ]
+      }
+    }
+  }
+}
