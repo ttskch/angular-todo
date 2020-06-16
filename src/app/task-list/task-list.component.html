@@ -1,8 +1,8 @@
-<ul>
-  <li *ngFor="let task of tasks">
+<nz-list nzBordered>
+  <nz-list-item *ngFor="let task of tasks">
     <app-task-list-item [task]="task"></app-task-list-item>
-  </li>
-  <li>
+  </nz-list-item>
+  <nz-list-item>
     <app-task-form (addTask)="addTask($event)"></app-task-form>
-  </li>
-</ul>
+  </nz-list-item>
+</nz-list>
