@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/task';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-task-list',
@@ -8,7 +9,9 @@ import { Task } from '../../models/task';
 })
 export class TaskListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private firestore: AngularFirestore,
+  ) { }
 
   tasks: Task[] = [
     {title: '牛乳を買う', done: false, deadline: new Date('2021-01-01')},
@@ -21,5 +24,6 @@ export class TaskListComponent implements OnInit {
 
   addTask(task: Task): void {
     this.tasks.push(task);
+    this.firestore.collection('tasks').add(task);
   }
 }
