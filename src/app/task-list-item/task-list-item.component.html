@@ -1,5 +1,5 @@
 <div class="left">
-  <label nz-checkbox [(ngModel)]="task.done" class="{{ task.done ? 'done' : '' }}">
+  <label nz-checkbox [(ngModel)]="task.done" class="{{ task.done ? 'done' : '' }}" (ngModelChange)="onToggleDone(task)">
     {{ task.title }}
   </label>
 </div>
