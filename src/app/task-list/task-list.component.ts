@@ -19,7 +19,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   ngOnInit(): void {
-    this.subscription = this.firestore.collection('tasks').valueChanges().subscribe((tasks: TaskDocument[]) => {
+    this.subscription = this.firestore.collection('tasks').valueChanges({idField: 'id'}).subscribe((tasks: TaskDocument[]) => {
       this.tasks = tasks.map(fromDocument);
     });
   }
@@ -29,6 +29,9 @@ export class TaskListComponent implements OnInit, OnDestroy {
   }
 
   addTask(task: Task): void {
-    this.firestore.collection('tasks').add(task);
+    const clone = Object.assign({}, task);
+    delete clone.id;
+
+    this.firestore.collection('tasks').add(clone);
   }
 }
