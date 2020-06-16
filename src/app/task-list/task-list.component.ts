@@ -16,12 +16,15 @@ export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
 
   ngOnInit(): void {
-    this.firestore.collection('tasks').valueChanges().subscribe((tasks: TaskDocument[]) => {
+    this.firestore.collection('tasks').valueChanges({idField: 'id'}).subscribe((tasks: TaskDocument[]) => {
       this.tasks = tasks.map(fromDocument);
     });
   }
 
   addTask(task: Task): void {
-    this.firestore.collection('tasks').add(task);
+    const clone = Object.assign({}, task);
+    delete clone.id;
+
+    this.firestore.collection('tasks').add(clone);
   }
 }
