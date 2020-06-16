@@ -12,6 +12,7 @@ export class TaskListItemComponent implements OnInit {
 
   @Input() task: Task;
   @Output() updateTask = new EventEmitter<Task>();
+  @Output() deleteTask = new EventEmitter<Task>();
 
   ngOnInit(): void {
   }
@@ -22,5 +23,9 @@ export class TaskListItemComponent implements OnInit {
 
   onToggleDone(task: Task): void {
     this.updateTask.emit(task);
+  }
+
+  onDelete(task: Task): void {
+    this.deleteTask.emit(task);
   }
 }

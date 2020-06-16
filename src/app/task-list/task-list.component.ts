@@ -34,4 +34,8 @@ export class TaskListComponent implements OnInit {
 
     this.firestore.collection('tasks').doc(task.id).update(clone);
   }
+
+  deleteTask(task: Task): void {
+    this.firestore.collection('tasks').doc(task.id).delete();
+  }
 }
