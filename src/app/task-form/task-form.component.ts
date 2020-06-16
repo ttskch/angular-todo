@@ -25,6 +25,7 @@ export class TaskFormComponent implements OnInit {
       title: this.newTask.title,
       done: false,
       deadline: this.newTask.deadline ? new Date(this.newTask.deadline) : null,
+      createdAt: new Date(),
     });
     this.newTask = {
       title: '',
