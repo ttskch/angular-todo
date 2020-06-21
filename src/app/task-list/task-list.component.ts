@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { fromDocument, Task, TaskDocument } from '../../models/task';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-task-list',
@@ -13,12 +14,11 @@ export class TaskListComponent implements OnInit {
     private firestore: AngularFirestore,
   ) { }
 
-  tasks: Task[] = [];
+  tasks$ = this.firestore.collection('tasks').valueChanges({idField: 'id'}).pipe(
+    map((tasks: TaskDocument[]) => tasks.map(fromDocument).sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime()))
+  );
 
   ngOnInit(): void {
-    this.firestore.collection('tasks').valueChanges({idField: 'id'}).subscribe((tasks: TaskDocument[]) => {
-      this.tasks = tasks.map(fromDocument).sort((a: Task, b: Task) => a.createdAt.getTime() - b.createdAt.getTime());
-    });
   }
 
   addTask(task: Task): void {
